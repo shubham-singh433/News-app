@@ -8,7 +8,7 @@ export default class News extends Component {
     pageSize: 5,
     categories: "general",
   };
-  static propTypes = {
+  static prop = {
     country: propTypes.string,
     pageSize: propTypes.number,
     categories: propTypes.string,
@@ -24,7 +24,7 @@ export default class News extends Component {
   }
   async componentDidMount() {
     let data = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.categories}&apiKey=bf815386ca8a43689bf8983df7237436&pageSize=${this.props.pageSize}`
+      `https://newsapi.org/v2/everything?q=${this.props.categories}&apiKey=bf815386ca8a43689bf8983df7237436&pageSize=${this.props.pageSize}`
     );
     this.setState({ loading: true });
     let ParseData = await data.json();
@@ -37,9 +37,7 @@ export default class News extends Component {
   }
   handleNext = async () => {
     let data = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=${
-        this.props.country
-      }&category=${
+      `https://newsapi.org/v2/everything?q=${
         this.props.categories
       }&apiKey=bf815386ca8a43689bf8983df7237436&page=${
         this.state.page + 1
@@ -47,6 +45,7 @@ export default class News extends Component {
     );
     this.setState({ loading: true });
     let ParseData = await data.json();
+    console.log(ParseData);
     this.setState({
       page: this.state.page + 1,
       article: ParseData.articles,
@@ -56,9 +55,7 @@ export default class News extends Component {
   };
   handlePrev = async () => {
     let data = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=${
-        this.props.country
-      }&category=${
+      `https://newsapi.org/v2/everything?q=${
         this.props.categories
       }&apiKey=bf815386ca8a43689bf8983df7237436&page=${
         this.state.page - 1
@@ -95,9 +92,14 @@ export default class News extends Component {
                     urlToImage={
                       element.urlToImage
                         ? element.urlToImage
-                        : "https://dnyuz.com/wp-content/uploads/2023/02/One-Solution-to-the-Housing-Crisis-Just-Make-People-Rich.jpg"
+                        : "https://th.bing.com/th/id/R.efe0d11efdc189fd0b70b375b791a8a1?rik=Wt57NAfAeks1Mg&riu=http%3a%2f%2fi.huffpost.com%2fgen%2f1166824%2fimages%2fo-NEWSPAPER-COFFEE-facebook.jpg&ehk=ST0iGrPgArcE3gMOwYAdc60SH5JAp%2bVviQAcEICVwfo%3d&risl=&pid=ImgRaw&r=0"
                     }
                     url={element.url}
+                    author={element.author ? element.author : "Unknown"}
+                    publishedAt={
+                      element.publishedAt ? element.publishedAt : "00:00 hrs"
+                    }
+                    source={element.source.name}
                   />
                 </div>
               );

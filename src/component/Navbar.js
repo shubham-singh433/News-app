@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 export default class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             NewsMonkey
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -20,33 +21,30 @@ export default class Navbar extends Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <a className="nav-link active" aria-current="page" href="/">
+              <Link className="nav-link active" aria-current="page" to="/">
                 Home
-              </a>
-              <a className="nav-link" href="/">
-                About us
-              </a>
-              <a className="nav-link" href="/">
+              </Link>
+              <Link className="nav-link" to="/cricket">
                 Cricket
-              </a>
-              <a className="nav-link" href="/">
+              </Link>
+              <Link className="nav-link" to="/business">
                 Business
-              </a>
-              <a className="nav-link" href="/">
+              </Link>
+              <Link className="nav-link" to="/entertainment">
                 Entertainment
-              </a>
-              <a className="nav-link" href="/">
-                general
-              </a>
-              <a className="nav-link" href="/">
-                health
-              </a>
-              <a className="nav-link" href="/">
-                sciences
-              </a>
-              <a className="nav-link" href="/">
-                technology
-              </a>
+              </Link>
+              <Link className="nav-link" to="/general">
+                General
+              </Link>
+              <Link className="nav-link" to="/health">
+                Health
+              </Link>
+              <Link className="nav-link" to="/science">
+                Sciences
+              </Link>
+              <Link className="nav-link" to="/technology">
+                Technology
+              </Link>
             </div>
           </div>
         </div>

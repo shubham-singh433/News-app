@@ -1,12 +1,107 @@
 import React, { Component } from "react";
 import Navbar from "./component/Navbar";
 import News from "./component/News";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 export default class App extends Component {
   render() {
     return (
       <>
-        <Navbar />
-        <News />
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <News key="" country="in" pageSize={5} categories="general" />
+              }
+            ></Route>
+            <Route
+              exact
+              path="/general"
+              element={
+                <News
+                  key="general"
+                  country="in"
+                  pageSize={5}
+                  categories="general"
+                />
+              }
+            ></Route>
+            <Route
+              exact
+              path="/cricket"
+              element={
+                <News
+                  key="cricket"
+                  country="in"
+                  pageSize={5}
+                  categories="cricket"
+                />
+              }
+            ></Route>
+            <Route
+              exact
+              path="/business"
+              element={
+                <News
+                  key="business"
+                  country="in"
+                  pageSize={5}
+                  categories="business"
+                />
+              }
+            ></Route>
+            <Route
+              exact
+              path="/science"
+              element={
+                <News
+                  key="science"
+                  country="in"
+                  pageSize={5}
+                  categories="science"
+                />
+              }
+            ></Route>
+            <Route
+              exact
+              path="/entertainment"
+              element={
+                <News
+                  key="entertainment"
+                  country="in"
+                  pageSize={5}
+                  categories="entertainment"
+                />
+              }
+            ></Route>
+            <Route
+              exact
+              path="/health"
+              element={
+                <News
+                  key="health"
+                  country="in"
+                  pageSize={5}
+                  categories="health"
+                />
+              }
+            ></Route>
+            <Route
+              exact
+              path="/technology"
+              element={
+                <News
+                  key="technology"
+                  country="in"
+                  pageSize={5}
+                  categories="technology"
+                />
+              }
+            ></Route>
+          </Routes>
+        </BrowserRouter>
       </>
     );
   }
